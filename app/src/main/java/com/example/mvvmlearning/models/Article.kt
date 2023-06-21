@@ -13,27 +13,27 @@ data class Article(
     @PrimaryKey(autoGenerate = true )
     var id:Int?=null,
     @SerializedName("author")
-    val author: String,
+    val author: String?,
     @SerializedName("content")
-    val content: String,
+    val content: String?,
     @SerializedName("description")
-    val description: String,
+    val description: String?,
     @SerializedName("publishedAt")
-    val publishedAt: String,
+    val publishedAt: String?,
     @SerializedName("source")
-    val source: Source, //We need a type converter for this datatype as by default room can only convert primitive datatypes
+    val source: Source?, //We need a type converter for this datatype as by default room can only convert primitive datatypes
     @SerializedName("title")
-    val title: String,
+    val title: String?,
     @SerializedName("url")
-    val url: String,
+    val url: String?,
     @SerializedName("urlToImage")
-    val urlToImage: String
+    val urlToImage: String?
 ):Serializable {
 
 
     override fun hashCode(): Int {
         var result = id.hashCode()
-        if (content.isEmpty()) {
+        if (content!!.isEmpty()) {
             result = 31 * result + content.hashCode()
         }
         return result
